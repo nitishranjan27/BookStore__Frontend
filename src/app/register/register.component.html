@@ -14,18 +14,17 @@
         <div fxLayout="row" >
             <button type="button" class="login" routerLink="/login">LOGIN</button>
             <button type="button" class="signup" routerLink="/register">SIGNUP</button>
-            <!-- <hr id="Indicator"> -->
         </div>
 
-        <form>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="form-fields">
-                <div class="fullname">
+                <div class="fullnam">
                     <div>
                         <mat-label>Full Name</mat-label>
                     </div>
                     <div>
                         <mat-form-field appearance="outline">
-                            <input type="text" class="input-field" formControlName="fullName" matInput placeholder="">
+                            <input type="text"  class="input-field" formControlName="fullName" matInput placeholder="">
                             <mat-error>Enter full name</mat-error>
                         </mat-form-field>
                     </div>
@@ -37,7 +36,7 @@
                     </div>
                     <div>
                         <mat-form-field appearance="outline">
-                            <input type="text" class="input-field" class="input-field" formControlName="email" matInput placeholder="">
+                            <input type="text" class="input-field" formControlName="email" matInput placeholder="">
                             <mat-error>Enter an email address</mat-error>
                         </mat-form-field>
                     </div>
@@ -62,7 +61,7 @@
                     <div>
                         <mat-form-field appearance="outline">
 
-                            <input type="text" class="input-field" formControlName="mobileNo" matInput placeholder="">
+                            <input type="text" class="input-field" formControlName="mobileNumber" matInput placeholder="">
                             <mat-error>Enter a mobile number</mat-error>
                         </mat-form-field>
                     </div>
