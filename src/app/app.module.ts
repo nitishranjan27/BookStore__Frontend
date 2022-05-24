@@ -14,10 +14,13 @@ import { LoginComponent } from './login/login.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select'
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GetallbookComponent } from './getallbook/getallbook.component';
+import { QuickviewComponent } from './quickview/quickview.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { GetallbookComponent } from './getallbook/getallbook.component';
     ForgotpasswordComponent,
     ResetpasswordComponent,
     DashboardComponent,
-    GetallbookComponent
+    GetallbookComponent,
+    QuickviewComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,9 @@ import { GetallbookComponent } from './getallbook/getallbook.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSelectModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
