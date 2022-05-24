@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { GetallbookComponent } from './getallbook/getallbook.component';
 import { LoginComponent } from './login/login.component';
+import { QuickviewComponent } from './quickview/quickview.component';
 import { RegisterComponent } from './register/register.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
@@ -15,9 +16,10 @@ const routes: Routes = [
   {path:'', redirectTo:"/login", pathMatch:'full' },
   {path:'dashboard',component:DashboardComponent,
   children: [
-    { path: '', redirectTo: 'getallbook', pathMatch: 'full', },
-    { path: 'getallbook',component:GetallbookComponent}
-    ]},
+    { path: '', redirectTo: '/dashboard/getallbook', pathMatch: 'full' },
+    { path: 'getallbook',component:GetallbookComponent},
+    { path: 'quickview',component:QuickviewComponent}
+    ]}
 ];
 
 @NgModule({

@@ -1,0 +1,106 @@
+<div class="mainheader"  fxLayout="row" fxLayoutAlign="center center" >
+    <div style="width: 80%;margin-left: 95px;">
+        <div style="width: 100%; margin-top: 2%;">
+            <span style="color:gray; cursor: pointer;" routerLink="/dashboard/getallbook">Home/</span><span> Books({{Book?.bookId}}) </span>
+        </div>
+        <div class="header">
+            <div class="Books">
+                <div class="smallimages">
+                    <div class="small1">
+                        <img class="img1" [src]="Book?.bookImage" alt="">
+                    </div>
+                    <div class="small2">
+                        <img class="img2" src="../../assets/small book.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="maincontent" fxLayout="" fxLayoutAlign="none center" fxLayout="row" fxFlex >
+                <div class="image" fxLayoutAlign="center center">
+                    <img [src]="Book?.bookImage" height="417px" width="225px" alt="bookImage">
+                </div>
+
+                <button class="btn">ADD TO BAG</button>
+                <button class="btn2">
+                    <mat-icon id="fav-icons">favorite</mat-icon>WHISH LIST
+                </button>
+
+            </div>
+            <div class="bookdetails">
+                <div class="bookname">
+                    {{Book?.bookName}}
+                </div>
+                <div class="author">
+                    by {{Book?.authorName}}
+                </div>
+                <div class="rating" fxLayoutAlign="space-evenly center">
+                    {{Book?.rating}}<img class="Star" src="../../assets/star_outline_white_24dp.svg"  alt="">
+                </div>
+                <p id="count">({{Book?.bookQuantity}})</p>
+                <div class="quantity">
+                    
+                </div>
+
+                <div class="price" fxLayout="row">
+                    <div class="discountprice">
+                        Rs. {{Book?.discountPrice}}
+                    </div>
+                    <div class="originalprice">
+                        <del> Rs.{{Book?.actualPrice}} </del>
+                    </div>
+                </div>
+                <div class="para">
+                    <span class="booktitle">Book Detail</span>
+                    <p class="bookparagraph">
+                        {{Book?.description}}
+                    </p>
+                </div>
+                <div class="feedback">
+                    <p>Customer Feedback</p>
+                </div>
+
+                <div class="overallrating">
+                    <div class="rate-para">
+                        <p class="ratename">Overall Rating</p>
+                        <div>
+                            <div class="rate">
+
+                                <input type="radio" id="star5" name="rate" [(ngModel)]="rating" value="5" />
+                                <label for="star5" title="Extremely Good">5 stars</label>
+                                <input type="radio" id="star4" name="rate" [(ngModel)]="rating" value="4" />
+                                <label for="star4" title="Very Good">4 stars</label>
+                                <input type="radio" id="star3" name="rate" [(ngModel)]="rating" value="3" />
+                                <label for="star3" title="Good">3 stars</label>
+                                <input type="radio" id="star2" name="rate" [(ngModel)]="rating" value="2" />
+                                <label for="star2" title="Not Bad">2 stars</label>
+                                <input type="radio" id="star1" name="rate" [(ngModel)]="rating" value="1" />
+                                <label for="star1" title="Bad">1 star</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div>
+                        <input class="review" [(ngModel)]="comment" type="text" placeholder="Write your review">
+                    </div>
+                    <div fxLayoutAlign="end center">
+                        <button class="submitbutton" mat-flat-button color="primary"
+                            (click)="addFeedback()">Submit</button>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column-reverse;">
+                        <div class="feedback-box"   fxLayoutGap ="20px"  *ngFor="let feedback of booksArray">
+                            <div class="user"   >
+                                <span class="user-feedback"> <b>User:</b> {{(feedback.fullName)}}</span>
+                            </div>
+                            <div>
+                                <span class="user-rating"> <b>Rating:</b> {{feedback.rating}} </span>
+                            </div>
+                            <div>
+                                <span class="user-comment"><b>Comment:</b>  {{feedback.comment}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
