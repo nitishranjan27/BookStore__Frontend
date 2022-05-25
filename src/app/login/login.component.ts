@@ -12,6 +12,7 @@ import { UserService } from '../Services/userServices/user.service';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   submitted = false;
+  token:any;
 
   constructor(private formBuilder: FormBuilder,private user: UserService,private admin:AdminService,private router: Router) { }
 
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
       
       this.user.login(data).subscribe((res: any) => {
         console.log(res);
+        localStorage.setItem("token",res.data.token);
         this.router.navigateByUrl('/dashboard')
       })
     }
@@ -41,6 +43,7 @@ export class LoginComponent implements OnInit {
       
       this.admin.admin(data).subscribe((res: any) => {
         console.log(res);
+        localStorage.setItem("token",res.data.token);
         this.router.navigateByUrl('/dashboard')
       })
     }

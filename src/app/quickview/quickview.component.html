@@ -16,10 +16,10 @@
             </div>
             <div class="maincontent" fxLayout="" fxLayoutAlign="none center" fxLayout="row" fxFlex >
                 <div class="image" fxLayoutAlign="center center">
-                    <img [src]="Book?.bookImage" height="417px" width="225px" alt="bookImage">
+                    <img [src]="Book?.bookImage" height="417px" width="236px" alt="bookImage">
                 </div>
 
-                <button class="btn">ADD TO BAG</button>
+                <button class="btn" (click)="AddToBag(Book)">ADD TO BAG</button>
                 <button class="btn2">
                     <mat-icon id="fav-icons">favorite</mat-icon>WHISH LIST
                 </button>
@@ -86,20 +86,21 @@
                             (click)="addFeedback()">Submit</button>
                     </div>
 
-                    <div style="display: flex; flex-direction: column-reverse;">
-                        <div class="feedback-box"   fxLayoutGap ="20px"  *ngFor="let feedback of booksArray">
-                            <div class="user"   >
-                                <span class="user-feedback"> <b>User:</b> {{(feedback.fullName)}}</span>
-                            </div>
-                            <div>
-                                <span class="user-rating"> <b>Rating:</b> {{feedback.rating}} </span>
-                            </div>
-                            <div>
-                                <span class="user-comment"><b>Comment:</b>  {{feedback.comment}}</span>
-                            </div>
+                    
+                </div>
+                
+                <div style="display: flex; flex-direction: column-reverse;margin-left: 60px;margin-top: 30px;">
+                    <div class="feedback-box"   fxLayoutGap ="20px"  *ngFor="let feedback of booksArray">
+                        <div class="user"   >
+                            <span class="user-feedback"> <b>User:</b> {{(feedback?.fullName)}}</span>
+                        </div>
+                        <div>
+                            <span class="user-rating"> <b>Rating:</b> {{feedback?.rating}} </span>
+                        </div>
+                        <div>
+                            <span class="user-comment"><b>Comment:</b>  {{feedback?.comment}}</span>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
