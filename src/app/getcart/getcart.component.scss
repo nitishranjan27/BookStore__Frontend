@@ -1,0 +1,397 @@
+.main {
+    height: 100%;
+    margin: 2% 109px;
+}
+
+.home {
+    color: gray;
+    cursor: pointer;
+}
+
+.main-content {
+    width: 69%;
+    border: 2px solid #E4E4E4;
+    margin-top: 3%;
+    margin-left: 7%;
+}
+
+.title-header {
+    background-color: white;
+    padding: 16px;
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.location {
+    margin-left: 270%;
+    padding: 6px;
+}
+
+.mat-card {
+
+    width: 270px;
+    height: 90px;
+}
+
+.image {
+    width: 65px;
+    height: 85px;
+    opacity: 1;
+    position: relative;
+    top: 5px;
+    margin-left: 36px;
+
+
+}
+
+.bookName {
+    height: 24px;
+    width: 167px;
+}
+
+.authorName {
+    height: 16px;
+    width: 76px;
+}
+
+.bodyBox {
+    height: 180px;
+}
+
+.placeOrder {
+    width: 270px;
+    height: 90px;
+}
+
+.inputBox {
+    border: 1px solid #DBDBDB;
+    height: 24px;
+    width: 41px;
+
+}
+
+.quantitiy {
+    display: flex;
+    margin-top: 14%;
+    margin-left: 3%;
+}
+
+.circle {
+    height: 24px;
+    width: 24px;
+    margin-right: 4%;
+    cursor: pointer;
+}
+
+.remove-btn {
+    margin-left: 3%;
+    margin-top: 0px;
+    cursor: pointer;
+    background: border-box;
+    border: none;
+    font-weight: bold;
+}
+
+.inputBox {
+    border: 1px solid gainsboro;
+    height: 24px;
+    width: 41px;
+    margin-right: 4%;
+    text-align: center;
+
+}
+
+.placebutton {
+
+    width: 151px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.customerAddress {
+    width: 512px;
+}
+
+.button1 {
+    width: 150px;
+    height: 35px;
+}
+
+.mat-card {
+
+    width: 270px;
+    height: 90px;
+}
+
+#para {
+    margin-top: -13px;
+    color: gray;
+}
+
+#del {
+    margin-right: 40px;
+    color: gray;
+    margin-left: 11px;
+}
+
+.image {
+    width: 99px;
+    height: 138px;
+    opacity: 1;
+    margin-left: 36px;
+    margin-top: -2px;
+}
+
+
+.bookName {
+    height: 24px;
+    width: 167px;
+}
+
+.authorName {
+    height: 16px;
+    width: 76px;
+}
+
+.bodyBox {
+    // height: 180px;
+    min-height: 100px;
+}
+
+.placeOrder {
+
+    width: 270px;
+    height: 90px;
+}
+
+
+.placebutton {
+
+    width: 151px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.button1 {
+    background: blue;
+    border: none;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: -6%;
+    float: right;
+}
+
+
+//  Address Details!
+.address {
+    background: gainsboro;
+    margin-top: 37px;
+    flex-direction: row;
+    margin-left: 7%;
+    box-sizing: border-box;
+    display: flex;
+    width: 69%;
+    align-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.customer {
+
+    border: 1px solid rgb(220, 220, 220);
+    margin-top: 30px;
+    flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+    margin-left: 7%;
+    width: 69%;
+}
+
+.newAddress {
+    margin-right: -43%;
+}
+
+
+.address-btn {
+    background: none;
+    border-radius: 3px;
+    border: 1px solid brown;
+    color: brown;
+    margin-top: 10%;
+    padding: 7px
+}
+
+.mat-form-field-infix {
+    display: block;
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    width: 210px !important;
+}
+
+.fullName {
+    margin-left: 2%;
+}
+
+.phoneNumber {
+    margin-right: 12%;
+}
+
+.form-conten {
+    box-sizing: border-box;
+    place-content: center space-between;
+    margin-top: 8%;
+}
+
+// Address Block
+.address-form {
+    flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+    margin-left: 12px;
+    margin-right: 13%;
+}
+
+.city {
+
+    margin-left: 1%;
+}
+
+
+.state {
+    margin-right: -2%;
+
+}
+
+
+.type {
+    margin-top: -3px;
+    margin-left: 5%;
+}
+
+.radio {
+    margin-left: 8%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.home1 {
+    margin-left: -7%;
+}
+
+.work {
+    margin-left: 12%;
+}
+
+.other {
+    margin-left: 12%;
+}
+
+.continue-btn {
+    background: blue;
+    border: none;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: -424%;
+    margin-top: -71%;
+    // margin-top: -6%;
+    width: 167%;
+    height: 35px;
+}
+
+//-Order Summary
+.order {
+    background: gainsboro;
+    margin-top: 37px;
+    flex-direction: row;
+    margin-left: 7%;
+    box-sizing: border-box;
+    display: flex;
+    width: 69%;
+    align-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.summary {
+    border: 1px solid rgb(220, 220, 220);
+    margin-top: 30px;
+    flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+    margin-left: 7%;
+    width: 69%;
+}
+
+.title-order {
+    margin-top: 3%;
+    margin-left: 57px;
+}
+
+.image2 {
+    width: 65px;
+    height: 85px;
+    position: relative;
+    top: 5px;
+    margin-left: 58px;
+    margin-top: 10px;
+}
+
+.order-price {
+    display: flex;
+    place-content: center space-between;
+    align-items: center;
+}
+
+#del2 {
+    margin-right: 29%;
+    color: gray
+}
+
+.button2 {
+    background: blue;
+    border: none;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 80%;
+    margin-top: -6%;
+    margin-bottom: 2%;
+    width: 150px;
+    height: 35px;
+}
+@media only screen and (min-device-width: 300px) and (max-device-width: 851px) and (-webkit-min-device-pixel-ratio: 1) {
+    .main-content {
+        width: 200%;
+        margin-left: -51%;
+    }
+
+    .bodyBox {
+        margin-left: -24px;
+        margin-top: -32px;
+    }
+    .button1{
+        margin: 11px;
+    }
+    .address {
+        margin-left: -51%;
+        width: 197%;
+    }
+    .order{
+        width: 197%;
+        margin-left: -51%;
+    }
+    .customer {
+        margin-left: -51%;
+        width: 197%;
+    }
+    .location {
+        margin-left: 17%;
+        margin-top: -8px;
+        height: 106%;
+    }
+    
+    
+}

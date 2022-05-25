@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { GetallbookComponent } from './getallbook/getallbook.component';
+import { GetcartComponent } from './getcart/getcart.component';
 import { LoginComponent } from './login/login.component';
 import { QuickviewComponent } from './quickview/quickview.component';
 import { RegisterComponent } from './register/register.component';
@@ -18,7 +19,8 @@ const routes: Routes = [
   children: [
     { path: '', redirectTo: '/dashboard/getallbook', pathMatch: 'full' },
     { path: 'getallbook',component:GetallbookComponent},
-    { path: 'quickview',component:QuickviewComponent}
+    { path: 'quickview',component:QuickviewComponent},
+    { path: 'getcart',component:GetcartComponent }
     ]}
 ];
 

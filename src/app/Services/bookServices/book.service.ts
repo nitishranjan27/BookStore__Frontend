@@ -32,7 +32,7 @@ export class BookService {
     }
     return this.httpService.postService('FeedBack/Add',data, true, header)
   }
-  getfeedBack(data: any){
+  getfeedBack(bookId: any){
     this.token = localStorage.getItem('token');
     console.log("data")
     let header = {
@@ -42,7 +42,39 @@ export class BookService {
       })
     }
     console.log(header); 
-    return this.httpService.getService('FeedBack/Get?bookId='+ data.bookId,true,header);
+    return this.httpService.getService('FeedBack/Get?bookId='+ bookId,false,header);
   
+  }
+  addToBag(bookId: any) {
+    console.log('bookId',bookId)
+    let header = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      })
+    }
+    return this.httpService.postService('Cart/Add' ,bookId, true, header)
+  }
+  getCart() {
+    this.token = localStorage.getItem('token');
+    console.log('token',this.token);
+
+    let header = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      })
+    }
+    console.log(header);
+    return this.httpService.getService('Cart/GetAll', true, header);
+  }
+  removecartitem(cart_Id: any) {
+    let header = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.token}`   
+      })
+    }
+    return this.httpService.deleteService('Cart/Delete?cart_Id=' + cart_Id, true, header)
   }
 }
