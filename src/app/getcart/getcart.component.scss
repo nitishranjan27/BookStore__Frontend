@@ -21,10 +21,10 @@
     flex-direction: row;
     box-sizing: border-box;
     display: flex;
+    justify-content: space-between;
 }
 
 .location {
-    margin-left: 270%;
     padding: 6px;
 }
 
@@ -110,7 +110,7 @@
 }
 
 .customerAddress {
-    width: 512px;
+    width: 603px;
 }
 
 .button1 {
@@ -209,7 +209,7 @@
 }
 
 .newAddress {
-    margin-right: -43%;
+    text-align: end;
 }
 
 
@@ -218,8 +218,9 @@
     border-radius: 3px;
     border: 1px solid brown;
     color: brown;
-    margin-top: 10%;
-    padding: 7px
+    // margin-top: -4%;
+    padding: 7px;
+    height: 41px;
 }
 
 .mat-form-field-infix {
@@ -231,17 +232,17 @@
 }
 
 .fullName {
-    margin-left: 2%;
+    margin-left: 15px;
 }
 
 .phoneNumber {
-    margin-right: 12%;
+    margin-left: 15px;
 }
 
 .form-conten {
     box-sizing: border-box;
     place-content: center space-between;
-    margin-top: 8%;
+    margin-top: 1%;
 }
 
 // Address Block
@@ -255,7 +256,7 @@
 
 .city {
 
-    margin-left: 1%;
+    margin-left: 0%;
 }
 
 
@@ -267,11 +268,12 @@
 
 .type {
     margin-top: -3px;
-    margin-left: 5%;
+    margin-left: 0%;
 }
 
 .radio {
-    margin-left: 8%;
+    margin-left: 7%;
+    margin-top: 8px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -296,9 +298,9 @@
     border-radius: 3px;
     cursor: pointer;
     margin-right: -424%;
-    margin-top: -71%;
+    margin-top: 22px;
     // margin-top: -6%;
-    width: 167%;
+    width: 107%;
     height: 35px;
 }
 
@@ -327,7 +329,7 @@
 
 .title-order {
     margin-top: 3%;
-    margin-left: 57px;
+    margin-left: 49px;
 }
 
 .image2 {
@@ -356,7 +358,7 @@
     color: white;
     border-radius: 3px;
     cursor: pointer;
-    margin-left: 80%;
+    margin-left: 76%;
     margin-top: -6%;
     margin-bottom: 2%;
     width: 150px;

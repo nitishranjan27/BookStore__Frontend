@@ -4,7 +4,7 @@
     </div>
 
     <div class="main-content" fxFlex.sm="50">
-        <div class="title-header" fxLayout="row" fxFlex.sm="50">
+        <div class="title-header" fxLayout="row" fxFlex.sm="50" fxLayoutAlign="space-between center">
             <!-- <div fxLayout="row" fxLayoutGap="2px"> -->
             <span class="title">My Cart({{booksArray?.length}}) </span>
             <div>
@@ -32,13 +32,13 @@
                         </div>
                     </div>
                     <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-                        <b style="margin-left: 18px;">Rs. {{Book.bookmodel.discountPrice}}</b>
-                        <del id="del"> Rs. {{Book.bookmodel.actualPrice}}</del>
+                        <b style="margin-left: 18px;">Rs. {{Book.bookmodel.discountPrice * Book.orderQuantity}}</b>
+                        <del id="del"> Rs. {{Book.bookmodel.actualPrice * Book.orderQuantity}}</del>
                     </div>
                     <div class="quantitiy" fxLayout="row">
-                        <img class="circle" src="../../assets/remove_circle_outline_black_24dp.svg">
-                        <div class="inputBox" fxLayoutAlign="center center">1</div>
-                        <img class="circle" src="../../assets/add_circle_outline_black_24dp.svg">
+                        <img class="circle" src="../../assets/remove_circle_outline_black_24dp.svg" (click)="minus(Book.cartId, Book.orderQuantity)">
+                        <div class="inputBox" fxLayoutAlign="center center">{{Book.orderQuantity}}</div>
+                        <img class="circle" src="../../assets/add_circle_outline_black_24dp.svg" (click)="plus(Book.cartId, Book.orderQuantity)">
                         <button class="remove-btn" (click)="removeCart(Book.cartId)">Remove</button>
                     </div>
 
@@ -65,27 +65,28 @@
     </div>
     <div class="customer" fxLayout="column" *ngIf="!showAddress">
 
-        <div style="margin: 10px;">
+        <div style="margin: 30px;">
 
             <form [formGroup]="BookingForm" class="customerAddress" fxLayout="column wrap" fxLayoutGap="30px;">
 
                 <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-
+                <div fxLayout="row " class="title-header" fxLayoutAlign="space-between center">
                     <span>
                         <h2 id="title-name">Customer Details</h2>
                     </span>
-                    <div class="newAddress">
-                        <button mat-raised-button *ngIf="showContinueButton" class="address-btn">Add New
+                    <!-- <div class="newAddress"> -->
+                        <button mat-raised-button  class="address-btn">Add New
                             Address</button>
-                    </div>
+                    <!-- </div> -->
+                </div>
 
-                    <div class="form-conten" div fxLayout="row wrap" fxLayoutAlign="space-between center" class="full">
+                    <div class="form-conten" div fxLayout="row wrap" fxLayoutAlign="space-between center" >
                         <div class="fullName">
                             <div>
                                 <mat-label>FullName</mat-label>
                             </div>
                             <mat-form-field appearance="outline" class="content" id="email" with="100%">
-                                <input type="Text" matInput placeholder="" formControlName="fullName">
+                                <input type="Text" matInput placeholder=""  [value]="fullName" disabled>
                                 <mat-error fxLayoutAlign="end">Full Name required !</mat-error>
                             </mat-form-field>
                         </div>
@@ -94,7 +95,7 @@
                                 <mat-label>Mobile Number</mat-label>
                             </div>
                             <mat-form-field appearance="outline" class="content" id="phonenumber">
-                                <input type="tel" matInput placeholder="" formControlName="phonenumber">
+                                <input type="tel" matInput placeholder=""  [value]="MobileNumber" disabled>
                                 <mat-error fxLayoutAlign="end">Mobile Number required !</mat-error>
                             </mat-form-field>
                         </div>
@@ -105,7 +106,7 @@
                             </div>
 
                             <mat-form-field appearance="outline" id="address">
-                                <input type="text" matInput placeholder="" formControlName="fullAddress">
+                                <input type="text" matInput placeholder="" formControlName="address">
                                 <mat-error fxLayoutAlign="end">Address required !</mat-error>
                             </mat-form-field>
 
@@ -133,15 +134,18 @@
                                 <div fxLayout="column" fxLayoutGap="7px">
                                     <span class="type">Type</span>
                                     <mat-radio-group aria-label="Select an option" class="radio">
-                                        <mat-radio-button class="home1" value="1">home</mat-radio-button>
-                                        <mat-radio-button class="work" value="2">work</mat-radio-button>
-                                        <mat-radio-button class="other" value="3">other</mat-radio-button>
+                                        <mat-radio-button class="home1" (click)="typeId=1"   value="1">home</mat-radio-button>
+                                        <mat-radio-button class="work" (click)="typeId=2"  value="2">work</mat-radio-button>
+                                        <mat-radio-button class="other" (click)="typeId=3"  value="3">other</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
-
                                 <div fxLayoutAlign="end">
                                     <button mat-raised matTooltip="Continue" class="continue-btn"
-                                        *ngIf="showContinueButton" (click)="onSubmit()">Continue</button>
+                                         (click)="onSubmit()">Add Address</button>
+                                </div>
+                                <div fxLayoutAlign="end">
+                                    <button mat-raised matTooltip="Continue" class="continue-btn"
+                                        *ngIf="showContinueButton" (click)="showOrdersummery=true">Continue</button>
                                 </div>
                             </div>
                         </div>
@@ -151,7 +155,7 @@
         </div>
     </div>
 
-    <div class="order" fxLayout="row" *ngIf="showCart">
+    <div class="order" fxLayout="row" >
         <mat-toolbar fxLayout="row">
             <div fxLayout="row" fxLayoutGap="2px">
                 <span class="title">Order Summary</span>
@@ -159,7 +163,7 @@
         </mat-toolbar>
     </div>
 
-    <div class="summary" *ngIf="!showCart">
+    <div class="summary" *ngIf="showOrdersummery">
 
         <div fxLayout="column">
 
@@ -170,13 +174,13 @@
                     <h2 class="title-order">Order Summary</h2>
                 </span>
 
-                <div fxLayoutGap="40px" fxLayout="row wrap" fxLayoutAlign="start center" style="margin-right: 415px;">
+                <div style="display: flex;flex-direction: row;justify-content: flex-start;">
 
                     <div>
                         <img [src]="Book.bookmodel.bookImage" alt="" class="image2">
                     </div>
 
-                    <div fxLayout="column" fxLayoutAlign="start none">
+                    <div fxLayout="column" fxLayoutAlign="start none" style="margin-left: 26px;margin-top: 13px;">
 
                         <div fxLayoutGap="20px">
 
