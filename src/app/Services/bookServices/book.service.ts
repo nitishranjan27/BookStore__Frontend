@@ -77,4 +77,31 @@ export class BookService {
     }
     return this.httpService.deleteService('Cart/Delete?cart_Id=' + cart_Id, true, header)
   }
+  updatecartitem(cart_Id: any, orderQuantity:any) {
+    let header = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.token}`   
+      })
+    }
+    return this.httpService.putService(`Cart/Update?cart_Id=${cart_Id}&orderQuantity=${orderQuantity}`,{}, true, header);
+  }
+  getAddress(typeId: any) {
+    let header = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      })
+    }
+    return this.httpService.getService('Address/Get', true, header);
+  }
+  addAddress(reqData: any) {
+    let header = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      })
+    }
+    return this.httpService.postService('Address/Add', reqData, true, header);
+  }
 }

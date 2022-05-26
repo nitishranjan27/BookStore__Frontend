@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookService } from '../Services/bookServices/book.service';
 
 @Component({
@@ -14,25 +14,47 @@ export class GetcartComponent implements OnInit {
   booksArray: any;
   token: any;
   Book: any;
+  bookQuantity:any;
+  fullName:any;
+  MobileNumber:any;
+  typeId:any;
 
   showAddress = true;
   showButton = true;
   showCart = true;
-  showContinueButton = true;
-  constructor(private bookService: BookService) { }
+  showContinueButton = false;
+  showOrdersummery = false;
+  constructor(private bookService: BookService,private formBuilder: FormBuilder) { 
+    this.fullName= localStorage.getItem("fullName");
+    this.MobileNumber= localStorage.getItem("MobileNumber");
+  }
 
   ngOnInit(): void {
     this.getCartbook();
+    this.BookingForm = this.formBuilder.group({
+      address: ['', Validators.required],
+      city: ['', [Validators.required]],
+      state: ['', [Validators.required]]
+    });
+
   }
   onSubmit() {
     this.showCart = false;
-    this.showContinueButton = false;
+    this.showContinueButton = true;
 
     this.submitted = true;
     if (this.BookingForm.valid) {
-      return
+      let reqdata = {
+        address: this.BookingForm.value.address,
+        city: this.BookingForm.value.city,
+        state: this.BookingForm.value.state,
+        typeId: this.typeId
+      }
+      console.log(reqdata)
+      this.bookService.addAddress(reqdata).subscribe((response: any) => {
+        console.log("Address Added Successfully", response);
     }
-    
+  )}
   }
 
   getCartbook() {
@@ -51,6 +73,32 @@ export class GetcartComponent implements OnInit {
     console.log(cartId)
     this.bookService.removecartitem(cartId).subscribe((response: any) => {
       console.log('Remove successfully', response);
+    })
+  }
+  minus(cartId:any, orderQuantity:any){
+    console.log(cartId,orderQuantity)
+    if(orderQuantity > 1)
+    {
+      this.bookService.updatecartitem(cartId,(orderQuantity-1)).subscribe((response: any) => {
+        console.log("Cart minus Successfully", response);
+        this.getCartbook();
+      }); 
+    }
+     
+  }
+  plus(cartId:any, orderQuantity:any){
+    console.log(cartId,orderQuantity)
+    if(orderQuantity < 10)
+    {
+      this.bookService.updatecartitem(cartId,(orderQuantity+1)).subscribe((response: any) => {
+        console.log("Cart plus Successfully", response);
+        this.getCartbook();
+      });
+    }
+  }
+  getbookAddress(typeId: any) {
+    this.bookService.getAddress(typeId).subscribe((response: any) => {
+      console.log("Address Found Successfully", response);
     })
   }
   

@@ -35,6 +35,8 @@ export class LoginComponent implements OnInit {
       this.user.login(data).subscribe((res: any) => {
         console.log(res);
         localStorage.setItem("token",res.data.token);
+        localStorage.setItem("fullName",res.data.fullName);
+        localStorage.setItem("MobileNumber",res.data.mobileNumber);
         this.router.navigateByUrl('/dashboard')
       })
     }
@@ -44,6 +46,8 @@ export class LoginComponent implements OnInit {
       this.admin.admin(data).subscribe((res: any) => {
         console.log(res);
         localStorage.setItem("token",res.data.token);
+        localStorage.setItem("fullName",res.data.fullName);
+        localStorage.setItem("MobileNumber",res.data.mobileNumber);
         this.router.navigateByUrl('/dashboard')
       })
     }
