@@ -86,7 +86,7 @@ export class BookService {
     }
     return this.httpService.putService(`Cart/Update?cart_Id=${cart_Id}&orderQuantity=${orderQuantity}`,{}, true, header);
   }
-  getAddress(typeId: any) {
+  getAddress() {
     let header = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
@@ -103,5 +103,15 @@ export class BookService {
       })
     }
     return this.httpService.postService('Address/Add', reqData, true, header);
+  }
+  addorder(reqData: any)
+  {
+    let header = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      })
+    }
+    return this.httpService.postService('Order/AddOrder', reqData, true, header);
   }
 }
