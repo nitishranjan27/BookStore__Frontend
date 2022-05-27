@@ -11,7 +11,7 @@ export class GetallbookComponent implements OnInit {
   booksArray: any = [];
   bookQuantity : any;
   Book:any;
-  orderQuantity:any;
+  orderQuantity=1;
 
   constructor(private bookService: BookService,private router: Router) { }
 
@@ -29,15 +29,17 @@ export class GetallbookComponent implements OnInit {
     localStorage.setItem('bookId', Book.bookId); 
     this.router.navigateByUrl('dashboard/quickview')
   }
-  AddToBag(Book: any){
-    // let reqdata = {
-    //   bookId: this.Book.bookId,
-    //   orderQuantity: this.orderQuantity
-    // }
-    this.bookService.addToBag(Book.bookId).subscribe((response:any) =>{
-      console.log('Add To Bag ',response)
-    })
-    }
+    AddToBag(Book: any){
+      let reqdata = {
+        bookId: this.Book.bookId,
+        orderQuantity: this.orderQuantity
+      }
+      console.log(reqdata)
+      this.bookService.addToBag(reqdata).subscribe((response:any) =>{
+        console.log('Add To Bag ',response)
+      })
+      }
+
   lowtohigh(){
     this.booksArray= this.booksArray.sort((low:any,high:any)=> low.discountPrice-high.discountPrice);
     }

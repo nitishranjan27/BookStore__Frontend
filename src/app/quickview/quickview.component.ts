@@ -12,7 +12,7 @@ export class QuickviewComponent implements OnInit {
   Book: any;
   comment:any;
   rating:any;
-  orderQuantity:number=1;
+  orderQuantity=1;
 
   constructor(private bookService: BookService) { }
 

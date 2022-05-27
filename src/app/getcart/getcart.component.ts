@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BookService } from '../Services/bookServices/book.service';
 
 @Component({
@@ -19,18 +20,21 @@ export class GetcartComponent implements OnInit {
   MobileNumber:any;
   typeId:any;
 
+  AddressList:any;
+  AddressId:any;
   showAddress = true;
   showButton = true;
   showCart = true;
   showContinueButton = false;
   showOrdersummery = false;
-  constructor(private bookService: BookService,private formBuilder: FormBuilder) { 
+  constructor(private bookService: BookService,private formBuilder: FormBuilder,private router: Router) { 
     this.fullName= localStorage.getItem("fullName");
     this.MobileNumber= localStorage.getItem("MobileNumber");
   }
 
   ngOnInit(): void {
     this.getCartbook();
+    this.getbookAddress();
     this.BookingForm = this.formBuilder.group({
       address: ['', Validators.required],
       city: ['', [Validators.required]],
@@ -96,10 +100,30 @@ export class GetcartComponent implements OnInit {
       });
     }
   }
-  getbookAddress(typeId: any) {
-    this.bookService.getAddress(typeId).subscribe((response: any) => {
+  getbookAddress() {
+    this.bookService.getAddress().subscribe((response: any) => {
       console.log("Address Found Successfully", response);
+      this.AddressList = response.response;
+      this.AddressId = this.AddressList[0].addressId;
     })
   }
+Continue()
+{
+  this.showOrdersummery=true;
+  console.log(this.AddressId);
+}
+  ordersummary()
+  {
+    let reqData = {
+      bookId : this.booksArray[0].bookId,
+      addressId : this.AddressId,
+      bookQuantity : this.booksArray[0].orderQuantity
+    }
+    console.log(reqData)
+    this.bookService.addorder(reqData).subscribe((response: any) => {
+    console.log("order Successfully Added", response);
+    this.router.navigate(['/dashboard/placeOrder'])
+  })
+}
   
 }

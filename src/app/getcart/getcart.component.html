@@ -67,7 +67,7 @@
 
         <div style="margin: 30px;">
 
-            <form [formGroup]="BookingForm" class="customerAddress" fxLayout="column wrap" fxLayoutGap="30px;">
+            <!-- <form [formGroup]="BookingForm" class="customerAddress" fxLayout="column wrap" fxLayoutGap="30px;"> -->
 
                 <div fxLayout="row wrap" fxLayoutAlign="space-between center">
                 <div fxLayout="row " class="title-header" fxLayoutAlign="space-between center">
@@ -100,7 +100,7 @@
                             </mat-form-field>
                         </div>
 
-                        <div class="address-form" fxLayout="column">
+                        <!-- <div class="address-form" fxLayout="column">
                             <div>
                                 <mat-label>Address</mat-label>
                             </div>
@@ -142,16 +142,23 @@
                                 <div fxLayoutAlign="end">
                                     <button mat-raised matTooltip="Continue" class="continue-btn"
                                          (click)="onSubmit()">Add Address</button>
-                                </div>
+                                </div> -->
+                                <div *ngFor="let Address of AddressList">
+                                    <input type="radio" [(ngModel)]="AddressId"  [id]="Address.addressId" [value]="Address.addressId">
+                                     <span> {{Address.typeId==1? ' . HOME' : Address.typeId==2? ' . WORK' : ' . OTHER'}} </span>
+                                     <span> {{Address.address}} </span>
+                                     <span> {{Address.city}}</span>
+                                     <span> {{Address.state}}</span>
+                                 </div>
                                 <div fxLayoutAlign="end">
-                                    <button mat-raised matTooltip="Continue" class="continue-btn"
-                                        *ngIf="showContinueButton" (click)="showOrdersummery=true">Continue</button>
+                                    <button type="submit" mat-raised matTooltip="Continue" class="continue-btn"
+                                         (click)="Continue()">Continue</button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        <!-- </div> -->
+                    <!-- </div> -->
                 </div>
-            </form>
+            <!-- </form> -->
         </div>
     </div>
 
@@ -192,14 +199,14 @@
                         </div>
 
                         <div class="order-price">
-                            <b style="margin-left: 4px;">Rs. {{Book.bookmodel.discountPrice}}</b>
-                            <del id="del2"> Rs. {{Book.bookmodel.actualPrice}}</del>
+                            <b style="margin-left: 4px;">Rs. {{Book.bookmodel.discountPrice * Book.orderQuantity}}</b>
+                            <del id="del2"> Rs. {{Book.bookmodel.actualPrice * Book.orderQuantity}}</del>
                         </div>
                     </div>
                 </div>
             </div>
             <div>
-                <button type="submit" mat-raised-button matTooltip="Continue" class="button2">CheckOut</button>
+                <button type="submit" mat-raised-button matTooltip="Continue" class="button2" (click)="ordersummary()">CheckOut</button>
             </div>
         </div>
     </div>
